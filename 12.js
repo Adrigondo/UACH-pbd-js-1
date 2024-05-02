@@ -1,10 +1,17 @@
-const upperLimit=100;
-let oddSum=0;
-let evenSum=0;
-for(let i=1; i<=upperLimit; i+=2){
-    oddSum+=i;
+const forLoop = (lowerLimit, upperLimit, step ) => {
+    return new Promise((resolve, reject) => {
+        let sum = 0;
+        for (let i = lowerLimit; i <= upperLimit; i += step) {
+            sum += i;
+        }
+        resolve(sum);
+    })
 }
-for(let i=0; i<=upperLimit; i+=2){
-    evenSum+=i;
-}
-console.log(`The sum of even numbers is ${evenSum} and the sum of od numbers is ${oddSum}`);
+(() => {
+    forLoop(1, 100, 2).then((oddSum) => {
+        console.log(`The sum of odd numbers is ${oddSum}`);
+    });
+    forLoop(0, 100, 2).then((evenSum) => {
+        console.log(`The sum of even numbers is ${evenSum}`);
+    });
+})();
