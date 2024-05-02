@@ -9,19 +9,21 @@ const input = (question) => {
 let number = 'a';
 const main = async () => {
     number = Number(await input("Write a number:  "));
-    if(number==NaN){
+    
+    if (isNaN(number)) {
         throw "The value is not a number";
     }
+    
     return number;
 }
 main().then((number) => {
-    if(number>=0){
-        console.log(`${number} is positive`);
-    }else{
-        console.log(`${number} is negative`);
+    if (number % 2 == 0) {
+        console.log(`${number} is even`);
+    } else {
+        console.log(`${number} is odd`);
     }
 }).catch((err) => {
     console.error(err);
-}).finally(()=>{
+}).finally(() => {
     readline.close();
 });
