@@ -33,14 +33,16 @@ const main = async () => {
     return {
         lowerLimit,
         upperLimit,
-        ...await forLoop(lowerLimit, upperLimit, 2)
+        even: await forLoop(lowerLimit, upperLimit, 2),
+        odd: await forLoop(lowerLimit%2==0?lowerLimit+1:lowerLimit, upperLimit, 2),
     };
 }
 
 main().then(({
-    lowerLimit, upperLimit, sum, count
+    lowerLimit, upperLimit, even, odd
 }) => {
-    console.log(`The sum of multiple of 2 between ${lowerLimit} and ${upperLimit} is ${sum} and the count is ${count}`);
+    console.log(`The sum of even numbers between ${lowerLimit} and ${upperLimit} is ${even.sum} and the count is ${even.count}`);
+    console.log(`The sum of odd numbers between ${lowerLimit} and ${upperLimit} is ${odd.sum} and the count is ${odd.count}`);
 }).catch((err) => {
     console.error(err);
 }).finally(() => {
