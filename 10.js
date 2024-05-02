@@ -6,8 +6,8 @@ const readline = Readline.createInterface({
 const input = (question) => {
     return new Promise((resolve, reject) => readline.question(question, resolve));
 }
-let number = 'a';
 const main = async () => {
+    let number = 0;
     number = Number(await input("Write a number:  "));
     
     if (isNaN(number)) {
