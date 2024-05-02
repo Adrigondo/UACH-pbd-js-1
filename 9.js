@@ -6,22 +6,22 @@ const readline = Readline.createInterface({
 const input = (question) => {
     return new Promise((resolve, reject) => readline.question(question, resolve));
 }
-let number = 'a';
+let number = 0;
 const main = async () => {
     number = Number(await input("Write a number:  "));
-    if(number==NaN){
+    if (isNaN(number)) {
         throw "The value is not a number";
     }
     return number;
 }
 main().then((number) => {
-    if(number>=0){
+    if (number >= 0) {
         console.log(`${number} is positive`);
-    }else{
+    } else {
         console.log(`${number} is negative`);
     }
 }).catch((err) => {
     console.error(err);
-}).finally(()=>{
+}).finally(() => {
     readline.close();
 });
